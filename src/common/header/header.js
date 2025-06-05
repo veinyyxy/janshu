@@ -3,33 +3,25 @@ import {CSSTransition} from 'react-transition-group';
 import {HeaderWrapper, SearchWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button} from './header-style.js'; // Assuming you have a styled component for the header
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faPencil } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux';
+import * as action_creaters from './action_creaters.js';
 
-class Header extends React.Component
-{
-  constructor(props) 
-  {
-    super(props);
-    this.state = {
-      focused: false
-    };
+const Header = (props) => {
+  const nodeRef = createRef();
 
-    this.nodeRef = createRef();
-  }
-
-  render() {
-    return (
-      <HeaderWrapper>
-        <Logo href='/' />
-        <Nav>
-          <NavItem className='left active'>Home</NavItem>
-          <NavItem className='left'>Download App</NavItem>
-          <NavItem className='right'>Login</NavItem>
-          <NavItem className='right'>Aa</NavItem>
+  return (
+    <HeaderWrapper>
+      <Logo href='/' />
+      <Nav>
+        <NavItem className='left active'>Home</NavItem>
+        <NavItem className='left'>Download App</NavItem>
+        <NavItem className='right'>Login</NavItem>
+        <NavItem className='right'>Aa</NavItem>
           <SearchWrapper>
-            <CSSTransition nodeRef={this.nodeRef} timeout={200} classNames='slide' in={this.state.focused}>
-              <NavSearch ref={this.nodeRef} className={this.state.focused ? 'focused' : ''} onFocus={() => this.setState({ focused: true })} onBlur={() => this.setState({ focused: false })}></NavSearch>
+            <CSSTransition nodeRef={nodeRef} timeout={200} classNames='slide' in={props.focused}>
+              <NavSearch ref={nodeRef} className={props.focused ? 'focused' : ''} onFocus={props.handleInputFocus} onBlur={props.handleInputBlur}></NavSearch>
             </CSSTransition>
-            <FontAwesomeIcon icon={faMagnifyingGlass} class={this.state.focused ? 'focused search-icon' : 'search-icon'} />
+            <FontAwesomeIcon icon={faMagnifyingGlass} className={props.focused ? 'focused search-icon' : 'search-icon'} />
           </SearchWrapper>
           <Addition>
             <Button className='reg'>
@@ -43,7 +35,24 @@ class Header extends React.Component
         </Nav>
       </HeaderWrapper>
     );
-  }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+
+  return {
+    focused: state.getIn(['header', 'focused'])
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleInputFocus: () => {
+      dispatch(action_creaters.createSearchFocusAction());
+    },
+    handleInputBlur: () => {
+      dispatch(action_creaters.createSearchBlurAction());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
