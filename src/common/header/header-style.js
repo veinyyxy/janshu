@@ -10,8 +10,25 @@ const HeaderWrapper = styled.div`
 `;
 
 const SearchWrapper = styled.div`
+    line-height: 60px;
     float: left;
     background: #eee;
+    border-radius: 45px;
+    position: relative;
+    .search-icon {
+        padding: 10px;
+        color: #969696;
+        position: absolute;
+        right: 3px;
+        bottom: 8px;
+        width: 25px;
+        height: 25px;
+        border-radius: 30px;
+        &.focused {
+            background: #777;
+            color: #fff;
+        }
+    }
 `;
 
 const Logo = styled.a`
@@ -28,7 +45,7 @@ const Nav = styled.div`
     width: 960px;
     height: 100%;
     margin: 0 auto;
-    pedding-right: 70px;
+    padding-right: 70px;
     box-sizing: border-box;
 `;
 
@@ -58,12 +75,29 @@ const NavSearch = styled.input.attrs({
     outline: none;
     border-radius: 19px;
     background: #eee;
-    margin-top: 9px;
-    pedding: 0 20px;
+    pedding: 0 50px 0 20px;
     box-sizing: border-box;
-    margin-left: 20px;
+    font-size: 15px;
+    color: #666;
     &::placeholder {
         color: #999;
+    }
+    &.focused {
+        width: 300px;
+    }
+    &.slide-enter {
+        transition: all 0.2s ease-out;
+    }
+    &.slide-enter-active {
+        width: 300px;
+        transition: all 0.2s ease-out;
+    }
+    &.slide-exit {
+        transition: all 0.2s ease-out;
+    }
+    &.slide-exit-active {
+        width: 160px;
+        transition: all 0.2s ease-out;
     }
 `;
 
