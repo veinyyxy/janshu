@@ -126,4 +126,55 @@ const Button = styled.div`
     }
 `;
 
-export { HeaderWrapper, SearchWrapper,Logo, Nav, NavItem, NavSearch, Addition, Button };
+const SearchInfo = styled.div`
+    position: absolute;
+
+    border: 1px solid #ccc;
+    left: 0;
+    top: 60px;
+    width: 340px;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+`;
+
+const SearchInfoTitle = styled.div`
+    line-height: 30px;
+    margin: 5px 15px 5px 15px;
+    font-size: 14px;
+    color: #969696;
+`;
+
+const SearchInfoSwitch = styled.span`
+    float: right;
+    font-size: 14px;
+    cursor: pointer;
+    color: #969696;
+    &:hover {
+        color: #333;
+    }
+`;
+
+const SearchInfoItem = styled.a`
+    display: block;
+    float: left;
+    line-height: 20px;
+    padding: 8px;
+    font-size: 12px;
+    color: #787878;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 5px 5px 5px 5px;
+    cursor: pointer;
+    &:hover {
+        background: #f0f0f0;
+        color: #333;
+    }
+`;
+
+const SearchInfoList = styled.div`
+    overflow: hidden;
+    padding: 0px 15px 15px 15px;
+`;
+
+export { HeaderWrapper, SearchWrapper,Logo, Nav, NavItem, NavSearch, Addition, Button, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList };
