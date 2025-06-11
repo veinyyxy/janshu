@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
 import {CSSTransition} from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faPencil } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faPencil, faArrowsSpin } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
 import * as action_creaters from './action_creaters.js';
 import {
@@ -48,7 +48,7 @@ class Header extends React.Component
               Sign Up
             </Button>
             <Button className='writting'>
-              <FontAwesomeIcon icon={faPencil} className='icon' />
+              <FontAwesomeIcon icon={faPencil} />
               Write
             </Button>
           </Addition>
@@ -71,7 +71,8 @@ class Header extends React.Component
         <SearchInfo onMouseEnter={this.props.handleMouseEnter} onMouseLeave={this.props.handleMouseLeave}>
           <SearchInfoTitle>
             Popular Searches
-            <SearchInfoSwitch onClick={this.props.handlePageChange}>Switch</SearchInfoSwitch>
+            <SearchInfoSwitch onClick={() => this.props.handlePageChange(this.spinIcon)}>Switch</SearchInfoSwitch>
+            <FontAwesomeIcon ref={(icon)=>{this.spinIcon = icon}} icon={faArrowsSpin} className='spin'/>
           </SearchInfoTitle>
           <SearchInfoList>
             {pageList}
@@ -104,7 +105,8 @@ const mapDispatchToProps = (dispatch) => {
     handleInputBlur: () => {
       dispatch(action_creaters.createSearchBlurAction());
     },
-    handlePageChange: () => {
+    handlePageChange: (spinIcon) => {
+    spinIcon.style.transform = `rotate(${(spinIcon.style.transform === 'rotate(360deg)' ? 0 : 360)}deg)`
       dispatch(action_creaters.createChangePageAction(1));
     },
     handleMouseEnter: () => {

@@ -143,6 +143,14 @@ const SearchInfoTitle = styled.div`
     margin: 5px 15px 5px 15px;
     font-size: 14px;
     color: #969696;
+    .spin {
+        display:block;
+        float: right;
+        font-size: 14px;
+        margin: 7px 2px 0 0;
+        transition: all 0.2s ease-in;
+        transform-origin: center center;
+    }
 `;
 
 const SearchInfoSwitch = styled.span`
