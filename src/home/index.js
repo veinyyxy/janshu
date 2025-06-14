@@ -7,13 +7,16 @@ import Writer from "./components/Writer";
 
 class Home extends Component {
   render() {
-    return (
+    return ( 
       <HomeWrapper>
         <HomeLeft>
           <img className="banner-image" src="/home_page.jpg" alt="Home" />
+          <Topic />
+          <List />
         </HomeLeft>
         <HomeRight>
-          <h1>Right Side Content</h1>
+          <Recommend />
+          <Writer />
         </HomeRight>
       </HomeWrapper>
     );

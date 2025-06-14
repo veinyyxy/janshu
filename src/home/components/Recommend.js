@@ -1,13 +1,35 @@
 import React, {Component} from "react";
-
+import { RecommendWrapper, RecommendItem } from "../home_style";
+import { connect } from "react-redux";
 class Recommend extends Component {
   render() {
     return (
-      <div>
-        <h1>Recommend Page</h1>
-      </div>
+      <RecommendWrapper>
+        {
+          this.props.recommendList.map((item) => {
+            return (
+              <RecommendItem key={item.get('id')}>
+                <img className="item-img" src={item.get('imgUrl')} alt={item.get('title')} />
+              </RecommendItem>
+            );
+          })
+        }
+        {this.props.recommendList.size === 0 && <div>Loading...</div>}
+      </RecommendWrapper>
     );
   }
 }
 
-export default Recommend;
+const mapStateToProps = (state) => {
+  return {
+    recommendList: state.getIn(['home', 'recommendList'])
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getRecommendList() {
+      dispatch({ type: 'GET_RECOMMEND_LIST' });
+    }
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Recommend);
