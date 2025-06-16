@@ -104,4 +104,81 @@ const RecommendItem = styled.div`
     }
 `;
 
-export { HomeWrapper, HomeLeft, HomeRight, BackTop, TopicWrapper, TopicItem, ListWrapper, ListItem, ListInfo, RecommendWrapper, RecommendItem };
+const WriterWrapper = styled.div`
+    width: 85%;
+    float: right;
+    padding: 20px;
+    .title {
+        height: 20px;
+        font-size: 14px;
+        color: #969696;
+        margin-bottom: 10px;
+    }
+    .left-text {
+        float: left;
+        font-size: 14px;
+        color: #969696;
+    }
+    .right-text {
+        float: right;
+        font-size: 14px;
+        color: #969696;
+        cursor: pointer;
+    }
+    .spin {
+        float: right;
+        font-size: 18px;
+        color: #969696;
+        margin-right: 2px;
+        margin-top: 2px;
+        transform: rotate(0deg);
+        transform-origin: center center;
+        transition: transform 0.2s ease-in-out;
+    }
+`;
+const WriterItem = styled.ul`
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    margin-top: 15px;
+    line-height: 20px;
+    li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .item-img {
+        float: left;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .item-info {
+        flex: 1;
+        height: 48px;
+        .item-name {
+            float: left;
+            font-size: 14px;
+            color: #333;
+        }
+        .item-follow {
+            float: right;
+            font-size: 14px;
+            color: #42c02e;
+            cursor: pointer;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    }
+    .item-desc {
+        margin-left: 58px;
+        margin-top: 40px;
+        text-align: left;
+        width: 238px;
+        font-size: 15px;
+        color: #969696;
+        position: absolute;
+    }
+`;
+export { HomeWrapper, HomeLeft, HomeRight, BackTop, TopicWrapper, TopicItem, ListWrapper, ListItem, ListInfo, RecommendWrapper, RecommendItem, WriterWrapper, WriterItem };

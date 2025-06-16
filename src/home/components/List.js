@@ -9,10 +9,10 @@ class List extends Component {
           this.props.articleList.map((item) => {
             return (
               <ListItem key={item.get('id')}>
-                <img className="item-img" src={item.get('imgUrl')} alt={item.get('title')} />
+                <img className="item-img" src={item.get('imageUrl')} alt={item.get('title')} />
                 <ListInfo>
                   <h3 className="title">{item.get('title')}</h3>
-                  <p className="desc">{item.get('discription')}</p>
+                  <p className="desc">{item.get('description')}</p>
                 </ListInfo>
               </ListItem>
             );
