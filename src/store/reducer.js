@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 import header_reducer from "../common/header/header_reducer";
-import {home_reducer} from "../home/store";
+import { home_reducer } from "../home/store";
+import detail_reducer from '../detail/store/detail_reducer';
 
 function combineReducersImmutable(reducers) {
   return (state = Map(), action) => {
@@ -17,43 +18,8 @@ function combineReducersImmutable(reducers) {
 
 const rootReducer = combineReducersImmutable({
   header: header_reducer,
-  home: home_reducer
+  home: home_reducer,
+  detail: detail_reducer
 });
 
 export default rootReducer;
-///////////////////////////////////////////////////////////////////////////////////////
-/*
-import header_reducer from "../common/header/header_reducer";
-import { combineReducers } from 'redux';
-
-const rootReducer = combineReducers({
-  header: header_reducer
-});
-
-export default rootReducer;
-*/
-//////////////////////////////////////////////////////////////////////////////////////
-
-/*
-const initialState = {
-  focused: false
-};
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'SEARCH_FOCUS':
-      return {
-        ...state,
-        focused: true
-      };
-    case 'SEARCH_BLUR':
-      return {
-        ...state,
-        focused: false
-      };
-    default:
-      return state;
-  }
-};
-
-export default reducer;*/

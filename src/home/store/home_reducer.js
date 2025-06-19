@@ -4,7 +4,8 @@ const initialState = fromJS({
   topiclist: [],
   articleList: [],
   recommendList: [],
-  writerInfo: []
+  writerInfo: [],
+  showBackTop: false
 });
 
 const home_reducer = (state = initialState, action) => {
@@ -18,8 +19,14 @@ const home_reducer = (state = initialState, action) => {
         recommendList: fromJS(action.payload.recommendList),
         writerInfo: fromJS(action.payload.writerInfo)
       });
+    case "GET_ARTICLE_LIST":
+      return state.set('articleList', fromJS(action.payload));
+    case "SHOW_BACKTOP_ACTION":
+      return state.set('showBackTop', fromJS(action.value));
     default:
       return state;
+    
+
   }
 };
 

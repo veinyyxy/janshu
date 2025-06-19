@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import logoPic from "../../statics/logo1.png";
-
+ 
 const HeaderWrapper = styled.div`
+    z-index: 1;
     background:rgb(255, 255, 255);
     height: 60px;
     color: rgb(3, 3, 3);
@@ -31,7 +32,7 @@ const SearchWrapper = styled.div`
     }
 `;
 
-const Logo = styled.a`
+const Logo = styled.div`
     position: absolute;
     top: 0px;
     left: 0px;

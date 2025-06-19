@@ -74,7 +74,8 @@ const ListItem = styled.div`
         height: 100px;
         border-radius: 10px;
     }
-`; 
+`;
+
 const ListInfo = styled.div`
     width: 500px;
     float: left;
@@ -87,6 +88,23 @@ const ListInfo = styled.div`
         font-size: 13px;
         color: #999;
         margin-top: 10px;
+    }
+`;
+
+const ArticleInfo = styled.div`
+    float: left;
+    width: 100%;
+    line-height: 30px;
+    .Author{
+        float:left;
+        padding-right: 15px;
+    }
+    .CommentCount{
+        float:left;
+        padding-right: 15px;
+    }
+    .LikeCount{
+        float:left;
     }
 `;
 
@@ -181,4 +199,43 @@ const WriterItem = styled.ul`
         position: absolute;
     }
 `;
-export { HomeWrapper, HomeLeft, HomeRight, BackTop, TopicWrapper, TopicItem, ListWrapper, ListItem, ListInfo, RecommendWrapper, RecommendItem, WriterWrapper, WriterItem };
+
+const LoadMore = styled.div`
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #a5a5a5;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    margin: 30px 0;
+    font-size: 14px;
+`;
+
+const BackToTop = styled.div`
+    position: fixed;
+    right: 100px;
+    bottom: 100px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    i {
+        font-size: 24px;
+        color: #333;
+    }
+    &:hover {
+        background-color: #f0f0f0;
+    }
+    &:active {
+        background-color: #e0e0e0;
+    }
+    transition: background-color 0.3s ease;
+`;
+
+export { HomeWrapper, HomeLeft, HomeRight, BackTop, TopicWrapper, TopicItem, ListWrapper, ListItem, ListInfo, ArticleInfo, 
+    RecommendWrapper, RecommendItem, WriterWrapper, WriterItem, LoadMore, BackToTop };

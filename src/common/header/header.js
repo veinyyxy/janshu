@@ -3,6 +3,8 @@ import {CSSTransition} from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faPencil, faArrowsSpin } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux';
+import { Link } from 'react-router'
+
 import * as action_creaters from './action_creaters.js';
 import {
   HeaderWrapper, 
@@ -30,7 +32,9 @@ class Header extends React.Component
   render() {
     return (
       <HeaderWrapper>
-        <Logo href='/' />
+        <Link to='/'>
+          <Logo />
+        </Link>
         <Nav>
           <NavItem className='left active'>Home</NavItem>
           <NavItem className='left'>Download App</NavItem>

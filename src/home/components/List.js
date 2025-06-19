@@ -1,6 +1,11 @@
 import React, {Component} from "react";
-import { ListWrapper, ListItem, ListInfo } from "../home_style";
+import { Link } from 'react-router'; 
+import { ListWrapper, ListItem, ListInfo, ArticleInfo } from "../home_style";
 import { connect } from 'react-redux';
+import { LoadMore } from "../home_style";
+import {actionCreators} from "../store";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
 class List extends Component {
   render() {
     return (
@@ -11,14 +16,20 @@ class List extends Component {
               <ListItem key={item.get('id')}>
                 <img className="item-img" src={item.get('imageUrl')} alt={item.get('title')} />
                 <ListInfo>
-                  <h3 className="title">{item.get('title')}</h3>
+                  <Link className="title" to="/detail">{item.get('title')}</Link>
                   <p className="desc">{item.get('description')}</p>
                 </ListInfo>
+                <ArticleInfo>
+                  <div className="Author">{item.get("author")}</div>
+                  <div className="CommentCount"><FontAwesomeIcon icon={faComment} /> {item.get("commentCount")}</div>
+                  <div className="LikeCount"><FontAwesomeIcon icon={faHeart} /> {item.get("likeCount")}</div>
+                </ArticleInfo>
               </ListItem>
             );
           })
         }
         {this.props.articleList.size === 0 && <div>Loading...</div>}
+        <LoadMore onClick={this.props.getArticleList}>加载更多</LoadMore>
       </ListWrapper>
     );
   }
@@ -33,7 +44,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getArticleList() {
-      dispatch({ type: 'GET_ARTICLE_LIST' });
+      dispatch(actionCreators.createArticleListAction());
     }
   };
 };
