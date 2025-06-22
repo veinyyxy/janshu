@@ -38,7 +38,15 @@ class Header extends React.Component
         <Nav>
           <NavItem className='left active'>Home</NavItem>
           <NavItem className='left'>Download App</NavItem>
-          <NavItem className='right'>Login</NavItem>
+          {
+            this.props.login ? 
+            <Link to='/logout/myname'>
+              <NavItem className='right'>logout</NavItem>
+            </Link> : 
+            <Link to='/login'>
+              <NavItem className='right'>login</NavItem>
+            </Link>
+          }
           <NavItem className='right'>Aa</NavItem>
           <SearchWrapper>
             <CSSTransition nodeRef={this.nodeRef} timeout={200} classNames='slide' in={this.props.focused}>
@@ -51,10 +59,12 @@ class Header extends React.Component
             <Button className='reg'>
               Sign Up
             </Button>
-            <Button className='writting'>
+            <Link to='/write'>
+              <Button className='writting'>
               <FontAwesomeIcon icon={faPencil} />
               Write
             </Button>
+            </Link>
           </Addition>
         </Nav>
       </HeaderWrapper>
@@ -96,7 +106,8 @@ const mapStateToProps = (state) => {
     totalPage: state.getIn(['header', 'totalPage']),
     page: state.getIn(['header', 'page']),
     count: state.getIn(['header', 'count']),
-    mouseIn: state.getIn(['header', 'mouseIn'])
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    login: state.getIn(['login', 'isLogin'])
   };
 };
 

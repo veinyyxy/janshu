@@ -1,7 +1,8 @@
 import { Map } from 'immutable';
 import header_reducer from "../common/header/header_reducer";
 import { home_reducer } from "../home/store";
-import detail_reducer from '../detail/store/detail_reducer';
+import {detail_reducer} from '../detail/store';
+import { login_reducer } from '../login/store';
 
 function combineReducersImmutable(reducers) {
   return (state = Map(), action) => {
@@ -19,7 +20,8 @@ function combineReducersImmutable(reducers) {
 const rootReducer = combineReducersImmutable({
   header: header_reducer,
   home: home_reducer,
-  detail: detail_reducer
+  detail: detail_reducer,
+  login: login_reducer
 });
 
 export default rootReducer;
